@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JSP9Exo01</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <script src="https://nosir.github.io/cleave.js/dist/cleave.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.5.10/addons/cleave-phone.fr.js "></script>
+    </head>
+    <body>
+        <div class="container">
+            <legend>Formulaire de Paiement</legend>
+            <div class= "form">         
+            <label for="lname">Nom</label>
+            <input class="input-lname" type="text" id="lname" name="lastname" placeholder="Nom"/>
+            <label for="fname">Prénom</label>
+            <input class="input-fname" type="text" id="fname" name="firstname" placeholder="Prénom"/>
+            <label for="telephone">Numéro de téléphone</label>
+            <input class="input-phone" type="text" id="input-phone" name="phone" placeholder="Numéro de téléphone" />
+            <label for="dateoforder">Date de commande</label>
+            <input class="input-dateoforder" type="date" id="dateoforder" name="dateoforder"/>
+            <label for="ccard">Numéro de carte</label>
+            <input class="input-ccard" type="text" name="ccard" id="ccard" placeholder="Numéro de carte" />           
+            <i class="fab fa-cc-visa fa-2x"></i>
+            <i class="fab fa-cc-mastercard fa-2x"></i>
+            <i class="fab fa-cc-jcb fa-2x"></i>
+            <i class="fab fa-cc-diners-club fa-2x"></i>
+            <i class="fab fa-cc-amex fa-2x"></i>
+            <i class="fab fa-cc-discover fa-2x"></i>
+            <div>
+            <label for="cardholdersname">Nom de Titulaire</label>
+            <input class="input-cname"  name="cname" id="cname" type="text"/>    
+            <label for="exdate">Date d'expiration</label>
+            <input class="input-exdate"  name="exdate" id="exdate" type="text"/>  
+            <label for="cvv">CVV</label>
+            <input class="input-cvv"  name="cvv" id="cvv" type="text"/>
+            </div>      
+            <button type="submit" class="registerbtn">Valider</button>
+        </form>
+        </div>  
+        <script>
+            var cleave = new Cleave('.input-phone', {
+            phone : true,
+            phoneRegionCode : 'FR'
+        });
+            var cleave = new Cleave('.input-dateoforder', {
+            date: true,
+            delimiter: '-',
+            datePattern: ['Y', 'm', 'd']
+        });
+            var cleave = new Cleave('.input-ccard', {
+            creditCard: true,
+            onCreditCardTypeChanged : function (type){
+        }
+        });
+            var cleave = new Cleave('.input-exdate', {
+            date: true,
+            delimiter: '/',
+            datePattern: ['m','y']
+        });
+            var cleave = new Cleave('.input-cvv', {
+            numero: true,
+            blocks: [3],
+            uppercase: true 
+        })
+        </script>
+        </body>
+</html>
